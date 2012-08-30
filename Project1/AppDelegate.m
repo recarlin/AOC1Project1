@@ -17,11 +17,11 @@
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     
-// user-defined variables
-    float damage = 15.5f;
-    float hp = 150.5f;
+// user-defined variables - the recommendations are so you don't get a VERY long console log
+    float damage = 15.5f; /* I wouldn't go over 50 */
+    float hp = 150.5f; /* I wouldn't go over 200 */
     int monsterLVL = 6;
-    int potion = 2;
+    int potion = 2; /* I wouldn't go over 5 */
     bool boss = NO;
     
 // cast float to int
