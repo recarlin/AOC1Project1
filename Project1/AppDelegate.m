@@ -16,34 +16,28 @@
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
+
+    float damage = 10.5f;
+    int hp = 150;
+    int monsterLVL = 2;
+    bool addMob = NO;
+    bool potion = YES;
+    int lvl = (int)damage + hp / 20;
+    
+    NSLog(@"Damage Base: %.2f Character Level: %d", damage, lvl);
+    
+    if ((monsterLVL > 10) || (addMob == YES)){
+        NSLog(@"You cannot win this fight! RUN!");
+    } else if ((monsterLVL >= 6) && (monsterLVL <= 10)){
+        NSLog(@"A strong monster appears!");
+        for (float mobHP = 150.00f; mobHP > 0; mobHP = mobHP - damage) {
+            NSLog(@"You attack! The monster has %.2f health left!", mobHP);
+        }
+        
+    } else {
+        NSLog(@"Don't even think about it!");
+    }
     return YES;
-}
-
-- (void)applicationWillResignActive:(UIApplication *)application
-{
-    // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
-    // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
-}
-
-- (void)applicationDidEnterBackground:(UIApplication *)application
-{
-    // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
-    // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
-}
-
-- (void)applicationWillEnterForeground:(UIApplication *)application
-{
-    // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
-}
-
-- (void)applicationDidBecomeActive:(UIApplication *)application
-{
-    // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-}
-
-- (void)applicationWillTerminate:(UIApplication *)application
-{
-    // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 
 @end
