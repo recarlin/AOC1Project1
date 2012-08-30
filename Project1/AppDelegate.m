@@ -19,10 +19,10 @@
 
     float damage = 10.5f;
     float hp = 140.0f;
-    int lvl = ((int)damage + hp) / 20;
     int monsterLVL = 6;
     bool boss = NO;
     bool potion = YES;
+    int lvl = ((int)damage + hp) / 20;
     int spree = 0;
     
     NSLog(@"Damage Base: %.2f Character Level: %d", damage, lvl);
@@ -34,24 +34,48 @@
         while (hp > 0){
             NSLog(@"A big monster appears!");
             for (float mobHP = 50.0f; mobHP > 0; mobHP = mobHP - damage) {
-                NSLog(@"You attack! The monster has %.2f health left.", mobHP);
-                hp = hp - 7.5;
-                if ((hp <= 0) && (potion = NO)){
+                if (mobHP <= 0){
+                    NSLog(@"You have slain the monster!");
+                } else {
+                   NSLog(@"You attack! The monster has %.2f health left.", mobHP); 
+                }
+                hp = hp - 15.0;
+                if ((hp <= 0) && (potion == NO)){
                     NSLog(@"You have died! You killed %d monsters.", spree);
-                } else if ((hp <= 0) && (potion = YES)){
-                    NSLog(@"You use your potion. You now have 50")
+                    break;
+                } else if ((hp <= 0) && (potion == YES)){
+                    hp = 100;
+                    potion = NO;
+                    NSLog(@"You use your potion. You now have 100 health.");
+                } else {
+                    NSLog(@"Monster attacks! You have %.2f health left.", hp);
                 }
             }
+            spree++;
         }
     } else if ((monsterLVL >= 1) && (monsterLVL <= 5)){
         /* Little Monster */
         while (hp > 0){
             NSLog(@"A little monster appears!");
-            for (float mobHP = 25.0f; mobHP > 0; mobHP = mobHP - damage) {
-                NSLog(@"You attack! The monster has %.2f health left!", mobHP);
+            for (float mobHP = 50.0f; mobHP > 0; mobHP = mobHP - damage) {
+                if (mobHP <= 0){
+                    NSLog(@"You have slain the monster!");
+                } else {
+                    NSLog(@"You attack! The monster has %.2f health left.", mobHP);
+                }
+                hp = hp - 7.5;
+                if ((hp <= 0) && (potion == NO)){
+                    NSLog(@"You have died! You killed %d monsters.", spree);
+                    break;
+                } else if ((hp <= 0) && (potion == YES)){
+                    hp = 100;
+                    potion = NO;
+                    NSLog(@"You use your potion. You now have 100 health.");
+                } else {
+                    NSLog(@"Monster attacks! You have %.2f health left.", hp);
+                }
             }
-            hp = hp - 15;
-            NSLog(@"You have %d health left.", hp);
+            spree++;
         }
     } else {
         /* Bunny */
