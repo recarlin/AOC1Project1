@@ -16,17 +16,21 @@
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
-
+    
+    /* user-defined variables */
     float damage = 10.5f;
     float hp = 140.0f;
-    int monsterLVL = 6;
+    int monsterLVL = 4;
     bool boss = NO;
-    bool potion = YES;
+    int potion = 3;
+    
+    /* cast float to int */
     int lvl = ((int)damage + hp) / 20;
     int spree = 0;
     
+    /* NSLog float and casted int */
     NSLog(@"Damage Base: %.2f Character Level: %d", damage, lvl);
-    
+    /* cast float to int */
     if ((monsterLVL > 10) || (boss == YES)){
         NSLog(@"You cannot win this fight! RUN!");
     } else if ((monsterLVL >= 6) && (monsterLVL <= 10)){
@@ -40,12 +44,12 @@
                    NSLog(@"You attack! The monster has %.2f health left.", mobHP); 
                 }
                 hp = hp - 15.0;
-                if ((hp <= 0) && (potion == NO)){
+                if ((hp <= 0) && (potion <= 0)){
                     NSLog(@"You have died! You killed %d monsters.", spree);
                     break;
-                } else if ((hp <= 0) && (potion == YES)){
+                } else if ((hp <= 0) && (potion >= 1)){
                     hp = 100;
-                    potion = NO;
+                    potion--;
                     NSLog(@"You use your potion. You now have 100 health.");
                 } else {
                     NSLog(@"Monster attacks! You have %.2f health left.", hp);
@@ -64,13 +68,13 @@
                     NSLog(@"You attack! The monster has %.2f health left.", mobHP);
                 }
                 hp = hp - 7.5;
-                if ((hp <= 0) && (potion == NO)){
+                if ((hp <= 0) && (potion <= 0)){
                     NSLog(@"You have died! You killed %d monsters.", spree);
                     break;
-                } else if ((hp <= 0) && (potion == YES)){
+                } else if ((hp <= 0) && (potion >= 1)){
                     hp = 100;
-                    potion = NO;
-                    NSLog(@"You use your potion. You now have 100 health.");
+                    potion--;
+                    NSLog(@"You use a potion. You now have 100 health.");
                 } else {
                     NSLog(@"Monster attacks! You have %.2f health left.", hp);
                 }
