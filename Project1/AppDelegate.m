@@ -66,7 +66,7 @@
         }
     } else if ((monsterLVL >= 1) && (monsterLVL <= 5)){
         while (hp > 0){
-            NSLog(@"A big monster appears!");
+            NSLog(@"A little monster appears!");
             for (float mobHP = 25.0f; mobHP > 0; mobHP = mobHP - damage){
                 if (damage >= mobHP){
                     NSLog(@"You attack and slay the monster!");
